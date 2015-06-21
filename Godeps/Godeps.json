@@ -1,0 +1,18 @@
+{
+	"ImportPath": "linkey",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/fatih/color",
+			"Rev": "f952d5afece9417e6240c2b649c1ef84bc3b6299"
+		},
+		{
+			"ImportPath": "github.com/shiena/ansicolor",
+			"Rev": "8368d3b31cf6f2c2464c7a91675342c9a0ac6658"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "49c95bdc21843256fb6c4e0d370a05f24a0bf213"
+		}
+	]
+}

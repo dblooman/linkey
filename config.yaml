@@ -1,0 +1,12 @@
+base: 'http://www.bbc.co.uk'
+
+headers:
+  -
+   key: 'X-content-override'
+   value: 'https://example.com'
+
+statuscode: 200
+
+paths:
+  - /news
+  - /news/uk
