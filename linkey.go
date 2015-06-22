@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/codegangsta/cli"
 	"github.com/fatih/color"
 	"gopkg.in/yaml.v2"
 )
@@ -24,11 +25,31 @@ type Config struct {
 
 func main() {
 
-	filename, _ := filepath.Abs("./config.yaml")
+	app := cli.NewApp()
+	app.Name = "linkey"
+	app.Usage = "Linkey is a tool for checking the status of a web page"
+
+	app.Commands = []cli.Command{
+		{
+			Name:      "check",
+			ShortName: "c",
+			Usage:     "checks URL's in config",
+			Action: func(c *cli.Context) {
+				loadConfig(c.Args().First())
+			},
+		},
+	}
+	app.Run(os.Args)
+}
+
+func loadConfig(configFile string) {
+
+	filename, _ := filepath.Abs(configFile)
 	yamlFile, err := ioutil.ReadFile(filename)
 
 	if err != nil {
-		panic(err)
+		color.Red("Unable to load config")
+		os.Exit(1)
 	}
 
 	var config Config
@@ -48,7 +69,6 @@ func main() {
 	} else {
 		color.Green("\n\nAll URL's are good buddy :)")
 	}
-
 }
 
 func checker(config Config) []string {
