@@ -60,12 +60,21 @@ func checker(config Config) []string {
 	for _, element := range config.Paths {
 		path := config.Base + element
 		wg.Add(1)
-		go func() {
-			resp, err := http.Get(path)
+		client := &http.Client{}
+		req, err := http.NewRequest("GET", path, nil)
 
+		if err != nil {
+			panic(err)
+		}
+		req.Header.Set("Connection", "close")
+		req.Close = true
+		go func() {
+
+			resp, err := client.Do(req)
 			if err != nil {
 				panic(err)
 			}
+			resp.Body.Close()
 
 			if resp.StatusCode == config.Statuscode {
 				green := color.New(color.FgGreen).PrintfFunc()
