@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/DaveBlooman/linkey-go/command"
+	"github.com/DaveBlooman/linkey/command"
 	"github.com/codegangsta/cli"
 )
 
