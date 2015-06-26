@@ -4,9 +4,13 @@
 
 The idea is to quickly check a page for broken links by doing a status check on all the relative URL's on the page.
 
-## Installation
+## Install
 
-    go get github.com/daveblooman/linkey
+To install, use `go get`:
+
+```bash
+$ go get -d github.com/DaveBlooman/linkey
+```
 
 ## Usage
 
@@ -47,3 +51,17 @@ paths:
   - /news/uk
 
 ```
+
+## Contribution
+
+1. Fork ([https://github.com/DaveBlooman/linkey-go/fork](https://github.com/DaveBlooman/linkey-go/fork))
+1. Create a feature branch
+1. Commit your changes
+1. Rebase your local changes against the master branch
+1. Run test suite with the `go test ./...` command and confirm that it passes
+1. Run `gofmt -s`
+1. Create a new Pull Request
+
+## Author
+
+[DaveBlooman](https://github.com/DaveBlooman)
