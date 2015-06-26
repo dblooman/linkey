@@ -1,23 +1,24 @@
 {
-	"ImportPath": "linkey",
-	"GoVersion": "go1.4.2",
+	"ImportPath": "github.com/DaveBlooman/linkey-go",
+	"GoVersion": "go1.4",
 	"Deps": [
 		{
 			"ImportPath": "github.com/codegangsta/cli",
-			"Comment": "1.2.0-74-g50c77ec",
-			"Rev": "50c77ecec0068c9aef9d90ae0fd0fdf410041da3"
+			"Comment": "1.2.0-127-gad48024",
+			"Rev": "ad480243a8a6cda30acf7cd999ea3e5142154fde"
 		},
 		{
 			"ImportPath": "github.com/fatih/color",
-			"Rev": "f952d5afece9417e6240c2b649c1ef84bc3b6299"
+			"Comment": "v0.1",
+			"Rev": "1b35f289c47d5c73c398cea8e006b7bcb6234a96"
 		},
 		{
 			"ImportPath": "github.com/shiena/ansicolor",
-			"Rev": "8368d3b31cf6f2c2464c7a91675342c9a0ac6658"
+			"Rev": "264b0566801533988151a23fc5f75d66d831d6ae"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
-			"Rev": "49c95bdc21843256fb6c4e0d370a05f24a0bf213"
+			"Rev": "7ad95dd0798a40da1ccdff6dff35fd177b5edf40"
 		}
 	]
 }
