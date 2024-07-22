@@ -45,6 +45,8 @@ headers:
 
 statuscode: 200
 
+concurrency: 10
+
 paths:
   - /news
   - /news/uk

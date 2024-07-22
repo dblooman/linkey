@@ -77,9 +77,8 @@ func validateConfig(config Config) error {
 }
 
 func checker(config Config) []string {
-	var brokenUrls []string
 	var wg sync.WaitGroup
-	var mu sync.Mutex
+	errorUrls := make(chan string, len(config.Paths))
 
 	headers := make(map[string]string)
 	for _, element := range config.Headers {
@@ -98,15 +97,20 @@ func checker(config Config) []string {
 			sem <- struct{}{}
 			defer func() { <-sem }()
 
-			if checkURL(client, config.Base+path, headers, config.Statuscode) {
-				mu.Lock()
-				brokenUrls = append(brokenUrls, config.Base+path)
-				mu.Unlock()
+			if !checkURL(client, config.Base+path, headers, config.Statuscode) {
+				errorUrls <- config.Base + path
 			}
 		}(path)
 	}
 
 	wg.Wait()
+	close(errorUrls)
+
+	var brokenUrls []string
+	for url := range errorUrls {
+		brokenUrls = append(brokenUrls, url)
+	}
+
 	return brokenUrls
 }
 
@@ -132,16 +136,16 @@ func checkURL(client *http.Client, url string, headers map[string]string, expect
 
 	if resp.StatusCode == expectedStatusCode {
 		color.Green("Status is good for: %s", url)
-		return false
+		return true
 	} else {
 		printBrokenUrls(url, resp.StatusCode)
-		return true
+		return false
 	}
 }
 
 func printBrokenUrls(path string, code int) {
 	red := color.New(color.FgRed).PrintfFunc()
-	red("Error with: %s, status is %d\n", path, code)
+	red("Error with: %s, Status code: %d\n", path, code)
 }
 
 func showBroken(response []string) {
