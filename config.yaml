@@ -1,11 +1,13 @@
 base: 'http://www.bbc.co.uk'
 
-headers:
-  -
-   key: 'X-content-override'
-   value: 'https://example.com'
+# headers:
+#   -
+#    key: 'X-content-override'
+#    value: 'https://example.com'
 
 statuscode: 200
+
+concurrency: 10
 
 paths:
 

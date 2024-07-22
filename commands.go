@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/DaveBlooman/linkey/command"
-	"github.com/codegangsta/cli"
+	"github.com/dblooman/linkey/command"
+	"github.com/urfave/cli"
 )
 
 var GlobalFlags = []cli.Flag{}
