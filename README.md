@@ -9,7 +9,7 @@ The idea is to quickly check a page for broken links by doing a status check on 
 To install, use `go get`:
 
 ```bash
-$ go get -d github.com/DaveBlooman/linkey
+$ go get -d github.com/dblooman/linkey
 ```
 
 ## Usage
